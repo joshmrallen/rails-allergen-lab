@@ -1,0 +1,12 @@
+<h1><%= @user.name %></h1>
+
+<h3>Recipes</h3>
+<% @user.recipes.each do |recipe|%>
+    <%= link_to recipe.name, recipe_path(recipe.id) %><br>
+<% end %>
+
+<h3>Allergies</h3>
+
+<%= link_to 'edit user profile', edit_user_path %><br> <!-- why does this seem to route correctly but only works if I type /edit into address bar? -->
+
+<br><%= button_to('Delete User', @user, method: :delete) %>

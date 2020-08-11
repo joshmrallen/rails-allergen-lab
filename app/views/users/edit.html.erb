@@ -1,0 +1,22 @@
+<h1>Edit User</h1>
+
+<table>
+    <%= form_for @user do |f| %>
+      
+        <tr width='25'>
+            <th scope='col'><%= f.label :name %></th>
+        </tr>
+
+        <tr>
+            <td><%= f.text_field :name %></td>
+        </tr>
+
+        <tr><td><%= f.submit %></td></tr>
+
+    <% end %>
+</table>
+
+<%= button_to('Delete User', @user, method: :delete) %>
+<%# have to use a symbol ':delete' with method for button_to %>
+<%# also have to identify the user variable %>
+<%# confirmed: this button_to works!! %>

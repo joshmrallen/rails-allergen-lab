@@ -1,0 +1,20 @@
+<h1>New User</h1>
+
+<table>
+    <%= form_for @user do |f| %>
+      
+        <tr width='25'>
+            <th scope='col'><%= f.label 'Name' %></th>
+        </tr>
+
+        <tr>
+            <td><%= f.text_field :name %></td>
+        </tr>
+
+        <tr><td><%= f.submit %></td></tr>
+
+    <% end %>
+</table>
+
+
+<!-- add field for creating allergy record and association through new user form -->

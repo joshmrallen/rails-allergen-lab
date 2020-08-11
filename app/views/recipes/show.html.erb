@@ -1,0 +1,18 @@
+<h1><%= @recipe.name %></h1>
+<h3>by <%= link_to @recipe.user.name, user_path(@recipe.user.id) %></h3>
+
+<h3>Ingredients</h3>
+<table>
+    <% @recipe.ingredients.each do |ingredient| %>
+        <tr width='25'>
+            <th scope='col' align='right'>
+                <%= link_to ingredient.name, ingredient_path(ingredient.id) %>
+            </th>
+            <td>
+                <%= ingredient.measure %>
+            </td>
+        </tr>
+    <% end %>
+</table><br>
+
+<%= link_to 'Back to Recipes List', recipes_path %>

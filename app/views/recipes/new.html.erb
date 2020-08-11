@@ -1,0 +1,56 @@
+<h1>Create a New Recipe</h1>
+<table>
+    <%= form_for @recipe do |f| %>
+        <tr>
+            <th scope='col'>
+                <%= f.label 'Enter Recipe Name' %>
+            </th>
+            <th scope='col'>
+                <%= f.label 'Choose Chef' %>
+            </th>
+        </tr>
+        <tr>
+            <td align='center'>
+                <%= f.text_field :name %>
+            </td>
+            <td>
+                <%= f.collection_select :user_id, @users, :id, :name %>
+            </td>
+        </tr>
+        <tr>
+            <th scope='col'>
+                <%= f.label 'Choose Ingredients' %>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
+            </td>
+        </tr>
+        <tr>
+            <th scope='col'>
+                <p>Or Specify a New Ingredient </p>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <%= f.fields_for :ingredients, @recipe.ingredients.build do |ingredients_fields| %>
+                    <%= f.label 'Ingredient Name:' %>
+                    <%= ingredients_fields.text_field :name %>
+                    <%= f.label 'Ingredient Measure:' %>
+                    <%= ingredients_fields.text_field :measure %>
+                <% end %>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <%= f.submit %>
+            </td>
+        </tr>
+    <% end %>
+</table>
+
+<br>
+<br>
+<%= link_to 'Back to Recipes Main', recipes_path %>
+

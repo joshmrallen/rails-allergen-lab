@@ -1,0 +1,18 @@
+<h1>Recipes</h1>
+
+<h4>Search by Ingredient</h4>
+<%= form_tag(recipes_path, method: :get) do %>
+    <%= text_field_tag(:search, params[:search]) %>
+    <%= submit_tag('Seach') %>
+<% end %>
+
+<% @recipes.each do |recipe| %>
+    <ul>
+        <li>
+            <%= link_to recipe.name, recipe_path(recipe.id) %>
+        </li>
+        <br>
+    </ul>
+<% end %>
+
+<h3>Can't find what you're looking for? <%= link_to 'Click here to create a new recipe!', new_recipe_path %></h3><br>
